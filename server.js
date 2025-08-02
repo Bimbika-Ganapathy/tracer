@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
   res.send('Tracker is running');
 });
- 
+
 app.get('/track.png', (req, res) => {
   const log = `${new Date().toISOString()} - ${req.ip} - ${req.headers['user-agent']}\n`;
   fs.appendFileSync('views.log', log);
