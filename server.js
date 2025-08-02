@@ -8,8 +8,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/track.png', (req, res) => {
-  const log = `${new Date().toISOString()} - ${req.ip} - ${req.headers['user-agent']}\n`;
-  fs.appendFileSync('views.log', log);
+  const log = `${new Date().toISOString()} - ${req.ip} - ${req.headers['user-agent']}`;
+  console.log('Pixel Hit:', log);  // <-- New line to instantly log hits
+  fs.appendFileSync('views.log', log + '\n');
+
   const pixel = Buffer.from(
     'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==',
     'base64'
